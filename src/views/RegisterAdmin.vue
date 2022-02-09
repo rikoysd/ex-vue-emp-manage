@@ -78,7 +78,7 @@ import axios from "axios";
 })
 export default class RegisterAdmin extends Vue {
   //エラーメッセージ
-  private errorMessage = "エラーメッセージ";
+  private errorMessage = "";
   //姓
   private lastName = "";
   //名前

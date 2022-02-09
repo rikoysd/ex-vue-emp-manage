@@ -63,7 +63,7 @@ import axios from "axios";
 })
 export default class LoginAdmin extends Vue {
   //エラーメッセージ
-  private errorMessage = "エラーメッセージ";
+  private errorMessage = "";
   //メールアドレス
   private mailAddress = "";
   //パスワード
