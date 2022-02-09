@@ -1,20 +1,19 @@
 /**
  * 管理者情報を表すクラスです.
- * 
+ *
  * @remarks
  * 管理者の名前やメールアドレスを表現したい場合はこのクラスを継承してください。
  */
-
 export class Administrator {
   constructor(
-    private _id: number,
     //ID
-    private _name: string,
+    private _id: number,
     //名前
-    private _mailAddress: string,
+    private _name: string,
     //メールアドレス
-    private _password: string
+    private _mailAddress: string,
     //パスワード
+    private _password: string
   ) {}
 
   public get id(): number {

@@ -4,33 +4,32 @@
  * @remarks
  * 従業員のプロフィールを表現したい場合はこのクラスを継承してください。
  */
-
 export class Employee {
   constructor(
-    private _id: number,
     //ID
-    private _name: string,
+    private _id: number,
     //名前
-    private _image: string,
+    private _name: string,
     //画像
-    private _gender: string,
+    private _image: string,
     //性別
-    private _hireDate: Date,
+    private _gender: string,
     //入社日
-    private _mailAddress: string,
+    private _hireDate: Date,
     //メールアドレス
-    private _zipCode: string,
+    private _mailAddress: string,
     //郵便番号
-    private _address: string,
+    private _zipCode: string,
     //住所
-    private _telephone: string,
+    private _address: string,
     //電話番号
-    private _salary: number,
+    private _telephone: string,
     //給料
-    private _characteristics: string,
+    private _salary: number,
     //特性
-    private _dependentsCount: number
+    private _characteristics: string,
     //扶養人数
+    private _dependentsCount: number
   ) {}
 
   public get id(): number {
