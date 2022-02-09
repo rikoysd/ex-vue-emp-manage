@@ -1,6 +1,4 @@
-/** 
- * ログイン機能のvueファイルです.
- */
+/** * ログイン機能のvueファイルです. */
 <template>
   <div>
     <div class="row login-page">
@@ -71,10 +69,10 @@ export default class LoginAdmin extends Vue {
   //パスワード
   private password = "";
 
-/**
- * ログインのメソッドを定義する
- * 
- */
+  /**
+   * ログインのメソッドを定義する
+   *
+   */
   async loginAdmin(): Promise<void> {
     const response = await axios.post(
       "http://153.127.48.168:8080/ex-emp-api/login",
@@ -94,4 +92,8 @@ export default class LoginAdmin extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-page {
+  width: 600px;
+}
+</style>
