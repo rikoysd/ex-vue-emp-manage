@@ -1,3 +1,6 @@
+/** 
+ * ログイン機能のvueファイルです.
+ */
 <template>
   <div>
     <div class="row login-page">
@@ -54,9 +57,40 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component
-export default class XXXComponent extends Vue {
+import axios from "axios";
+@Component({
+  components: {
+    LoginAdmin,
+  },
+})
+export default class LoginAdmin extends Vue {
+  //エラーメッセージ
   private errorMessage = "エラーメッセージ";
+  //メールアドレス
+  private mailAddress = "";
+  //パスワード
+  private password = "";
+
+/**
+ * ログインのメソッドを定義する
+ * 
+ */
+  async loginAdmin(): Promise<void> {
+    const response = await axios.post(
+      "http://153.127.48.168:8080/ex-emp-api/login",
+      {
+        mailAddress: this.mailAddress,
+        password: this.password,
+      }
+    );
+    console.dir("response:" + JSON.stringify(response));
+    if (response.data.status === "success") {
+      this.$router.push("/employeeList");
+    } else {
+      this.errorMessage = response.data.status.message;
+      console.log(this.errorMessage);
+    }
+  }
 }
 </script>
 
