@@ -2,7 +2,6 @@
  * 管理者登録機能vueファイルです.
  */
 <template>
-  <div>
     <div class="row register-page">
       <div class="error">{{ errorMessage }}</div>
       <form class="col s12" id="reg-form">
@@ -66,7 +65,6 @@
           </div>
         </div>
       </form>
-    </div>
   </div>
 </template>
 
