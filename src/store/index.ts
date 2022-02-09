@@ -1,5 +1,5 @@
 /**
- * Vuexストアの設定ファイルです(今回は従業員情報を持たせます).
+ * Vuexストアの設定ファイルです(共通情報を持たせます).
  *
  */
 import Vue from "vue";
@@ -20,7 +20,7 @@ export default new Vuex.Store({
   actions: {
     /**
      * 従業員一覧情報をWebAPIから取得してmutationを呼び出す.
-     * @param context 
+     * @param context - コンテキスト
      */
     async getEmployeeList(context) {
       const response = await axios.get(
@@ -34,8 +34,8 @@ export default new Vuex.Store({
   mutations: {
     /**
      * 従業員一覧情報を作成し、stateに格納する.
-     * @param state
-     * @param payload
+     * @param state - ステイト
+     * @param payload - WebAPIから取得した従業員情報(JSON)
      */
     showEmployeeList(state, payload) {
       state.totalEmployeeCount = payload.totalEmployeeCount;
@@ -63,7 +63,7 @@ export default new Vuex.Store({
   getters: {
     /**
      * state内の従業員数を返す.
-     * @param state
+     * @param state - ステイト
      * @returns 従業員数
      */
     getEmployeeCount(state) {
@@ -71,7 +71,7 @@ export default new Vuex.Store({
     },
     /**
      * state内の従業員一覧を返す.
-     * @param state
+     * @param state - ステイト
      * @returns 従業員一覧
      */
     getEmployees(state) {
@@ -79,11 +79,13 @@ export default new Vuex.Store({
     },
     /**
      * IDから従業員を1件検索し返す.
-     * @param state
-     * @returns IDから従業員を1件絞り込んだもの
+     * @param state - ステイト
+     * @returns 従業員情報
      */
-    getEmployeeById(state): Array<Employee> {
-      return state.employees.filter((employee) => employee.id);
+    getEmployeeById(state) {
+      return (id: number): Employee => {
+        return state.employees.filter((employee) => employee.id === id)[0];
+      };
     },
   }, // end getters
   modules: {}, // end modules

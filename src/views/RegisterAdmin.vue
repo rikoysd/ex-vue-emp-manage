@@ -1,3 +1,6 @@
+/**
+ * 管理者登録機能vueファイルです.
+ */
 <template>
   <div>
     <div class="row register-page">
@@ -69,14 +72,50 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component
-export default class XXXComponent extends Vue {
+import axios from "axios";
+@Component({
+  components: {
+    RegisterAdmin,
+  },
+})
+export default class RegisterAdmin extends Vue {
+  //エラーメッセージ
   private errorMessage = "エラーメッセージ";
+  //姓
   private lastName = "";
+  //名前
   private firstName = "";
+  //メールアドレス
   private mailAddress = "";
+  //パスワード
   private password = "";
+
+/**
+ * 管理者情報を登録する
+ * 
+ */
+  async registerAdmin(): Promise<void> {
+    const response = await axios.post(
+      "http://153.127.48.168:8080/ex-emp-api/insert",
+      {
+        name: this.lastName + " " + this.firstName,
+        mailAddress: this.mailAddress,
+        password: this.password,
+      }
+    );
+    console.dir("response", JSON.stringify(response));
+    if (response.data.status === "success") {
+      this.$router.push("/loginAdmin");
+    } else {
+      this.errorMessage = response.data.message;
+      console.log(this.errorMessage);
+    }
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.register-page{
+  width: 600px;
+}
+</style>
