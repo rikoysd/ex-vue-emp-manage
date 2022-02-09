@@ -8,9 +8,13 @@
 export class Administrator {
   constructor(
     private _id: number,
+    //ID
     private _name: string,
+    //名前
     private _mailAddress: string,
+    //メールアドレス
     private _password: string
+    //パスワード
   ) {}
 
   public get id(): number {
