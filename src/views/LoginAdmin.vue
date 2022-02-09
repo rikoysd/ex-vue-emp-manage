@@ -1,4 +1,3 @@
-/** * ログイン機能のvueファイルです. */
 <template>
   <div>
     <div class="row login-page">
@@ -56,11 +55,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
-@Component({
-  components: {
-    LoginAdmin,
-  },
-})
+@Component
 export default class LoginAdmin extends Vue {
   //エラーメッセージ
   private errorMessage = "";
@@ -72,6 +67,7 @@ export default class LoginAdmin extends Vue {
   /**
    * ログインのメソッドを定義する
    *
+   * @returns Promiseオブジェクト
    */
   async loginAdmin(): Promise<void> {
     const response = await axios.post(

@@ -1,4 +1,3 @@
-/** * 管理者登録機能vueファイルです. */
 <template>
   <div class="row register-page">
     <div class="error">{{ errorMessage }}</div>
@@ -69,11 +68,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
-@Component({
-  components: {
-    RegisterAdmin,
-  },
-})
+@Component
 export default class RegisterAdmin extends Vue {
   //エラーメッセージ
   private errorMessage = "";
@@ -87,8 +82,9 @@ export default class RegisterAdmin extends Vue {
   private password = "";
 
   /**
-   * 管理者情報を登録する
+   * 管理者情報を登録する.
    *
+   * @returns Promiseオブジェクト
    */
   async registerAdmin(): Promise<void> {
     const response = await axios.post(
