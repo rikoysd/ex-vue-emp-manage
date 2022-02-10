@@ -75,10 +75,9 @@
                     v-model="currentDependentsCount"
                     type="text"
                     class="validate"
-                    value="3"
                     required
                   />
-                  <label for="dependentsCount2">扶養人数</label>
+                  <label for="dependentsCount2"></label>
                 </div>
               </td>
             </tr>
@@ -141,7 +140,7 @@ export default class EmployeeDetail extends Vue {
    */
   async update(): Promise<void> {
     const response = await axios.post(
-      "http://153.127.48.168.8080/ex-emp-api/employee/update",
+      "http://153.127.48.168:8080/ex-emp-api/employee/update",
       {
         id: this.currentEmployee.id,
         dependentsCount: this.currentDependentsCount,
