@@ -126,10 +126,8 @@ export default class EmployeeDetail extends Vue {
   created(): void {
     const employeeId = Number(this.$route.params.id);
     this.currentEmployee = this.$store.getters.getEmployeeById(employeeId);
-
     this.currentEmployeeImage =
       "http://153.127.48.168:8080/ex-emp-api/img/" + this.currentEmployee.image;
-
     this.currentDependentsCount = this.currentEmployee.dependentsCount;
   }
 }
