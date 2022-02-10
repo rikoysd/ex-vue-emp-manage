@@ -8,63 +8,61 @@
             <tr>
               <th nowrap>従業員名</th>
               <td>
-                <span>{{ employee.name }}</span>
+                <span>{{ currentEmployee.name }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>写真</th>
               <td>
-                <img src="img/e2.png" />
+                <img v-bind:src="currentEmployeeImage" />
               </td>
             </tr>
             <tr>
               <th nowrap>性別</th>
               <td>
-                <span>女性</span>
+                <span>{{ currentEmployee.gender }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>入社日</th>
               <td>
-                <span>2012/11/29</span>
+                <span>{{ currentEmployee.hireDate }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>メールアドレス</th>
               <td>
-                <span>yamada@sample.com</span>
+                <span>{{ currentEmployee.mailAddress }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>郵便番号</th>
               <td>
-                <span>111-1111</span>
+                <span>{{ currentEmployee.zipCode }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>住所</th>
               <td>
-                <span>東京都新宿区1-1-1</span>
+                <span>{{ currentEmployee.address }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>電話番号</th>
               <td>
-                <span>090-0000-0000</span>
+                <span>{{ currentEmployee.telephone }}</span>
               </td>
             </tr>
             <tr>
               <th nowrap>給料</th>
               <td>
-                <span>400000円</span>
+                <span>{{ currentEmployee.salary }}円</span>
               </td>
             </tr>
             <tr>
               <th nowrap>特性</th>
               <td>
-                <span
-                  >明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。</span
-                >
+                <span>{{ currentEmployee.characteristics }}</span>
               </td>
             </tr>
             <tr>
@@ -129,10 +127,8 @@ export default class EmployeeDetail extends Vue {
     const employeeId = Number(this.$route.params.id);
     this.currentEmployee = this.$store.getters.getEmployeeById(employeeId);
 
-    const response = axios.get(
-      "http://153.127.48.168:8080/ex-emp-api/" + this.currentEmployee.image
-    );
-    this.currentEmployeeImage = JSON.stringify(response);
+    this.currentEmployeeImage =
+      "http://153.127.48.168:8080/ex-emp-api/img/" + this.currentEmployee.image;
 
     this.currentDependentsCount = this.currentEmployee.dependentsCount;
   }
