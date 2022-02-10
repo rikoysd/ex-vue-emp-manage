@@ -82,9 +82,22 @@ export default new Vuex.Store({
      * @param state - ステイト
      * @returns 従業員情報
      */
+    // getEmployeeById(state) {
+    //   return (id: number): Employee => {
+    //     return state.employees.filter((employee) => employee.id === id)[0];
+    //   };
+    // },
     getEmployeeById(state) {
-      return (id: number): Employee => {
-        return state.employees.filter((employee) => employee.id === id)[0];
+      return function(id: number) {
+        for (const employee of state.employees) {
+          try {
+            if (employee.id === id) {
+              return employee;
+            }
+          } catch (error) {
+            console.log("そのidは存在しません");
+          }
+        }
       };
     },
   }, // end getters
