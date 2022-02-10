@@ -125,7 +125,7 @@ export default class EmployeeDetail extends Vue {
   private currentDependentsCount = 0;
 
   /**
-   * リクエストパラメータのIDから1件の従業員情報を取得する
+   * リクエストパラメータのIDから1件の従業員情報を取得する.
    */
   created(): void {
     const employeeId = Number(this.$route.params.id);
@@ -136,7 +136,9 @@ export default class EmployeeDetail extends Vue {
   }
 
   /**
-   * 扶養人数を更新する
+   * 扶養人数を更新する.
+   * 
+   * @returns Promiseオブジェクト
    */
   async update(): Promise<void> {
     const response = await axios.post(

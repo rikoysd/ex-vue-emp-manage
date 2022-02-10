@@ -10,7 +10,9 @@ import axios from "axios";
 @Component
 export default class LogoutAdmin extends Vue {
   /**
-   * ログアウトをする
+   * ログアウトをする.
+   * 
+   * @returns Promiseオブジェクト
    */
   async created(): Promise<void> {
     const response = await axios.get(
