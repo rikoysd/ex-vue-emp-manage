@@ -11,9 +11,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="employee of employees" v-bind:key="employee.name">
+          <tr v-for="employee of employees" v-bind:key="employee.id">
             <td>
-              <router-link to="'/employeeDetail' + employee.id">
+              <router-link to="'/employeeDetail/' + employee.id">
               {{ employee.name }}
               </router-link>
               </td>
@@ -29,11 +29,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Employee } from "../types/employee";
-@Component({
-  components: {
-    EmployeeList,
-  },
-})
+@Component
 export default class EmployeeList extends Vue {
   /**
    * Vuexストアのアクション経由で非同期でWebAPIから従業員一覧を取得する.
